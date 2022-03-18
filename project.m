@@ -1,4 +1,14 @@
-
+%Hi Shanzeh, 
+%I started writing some code based off the tutorials. There are two parts:
+%text and fixation cross. feel free to try out the script and let me know
+%your thoughts later. Headed to the hospital, bye!
+%
+%
+%
+%
+%
+%
+%
 % Clear the workspace and the screen
 sca;
 close all;
@@ -26,7 +36,7 @@ black = BlackIndex(screenNumber);
 %
 %
 %
-%Display text
+% #1: Display text instructions
 Screen('TextSize', window, 30 );
 Screen('TextFont', window, 'Arial');
 DrawFormattedText(window, 'This is the title page of our project. Press any key to begin the trial.  ',...
@@ -36,9 +46,7 @@ Screen('Flip', window);
 %
 %
 %
-
-% Flip outside of the loop to get a time stamp
-
+% #2: Fixation Cross
 % Set up alpha-blending for smooth (anti-aliased) lines
 Screen('BlendFunction', window, 'GL_SRC_ALPHA', 'GL_ONE_MINUS_SRC_ALPHA');
 
