@@ -73,3 +73,4 @@ Screen('Flip', window);
 KbStrokeWait;
 sca;
 
+%Next, code the mask
