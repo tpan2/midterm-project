@@ -42,8 +42,6 @@ Random_Image_Generator = emotional_faces(Random).name;
 %theImageLocation = [PsychtoolboxRoot 'PsychDemos' filesep...
 %    'AlphaImageDemo' filesep 'konijntjes1024x768.jpg'];
 theImage = imread(Random_Image_Generator);
-imagesc(theImage)
-%% 
 
 % Get the size of the image
 [s1, s2, s3] = size(theImage);
