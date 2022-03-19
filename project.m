@@ -22,12 +22,12 @@ screens = Screen('Screens');
 % Draw to the external screen if avaliable
 screenNumber = max(screens);
 
-% Define black and white
+% Define black and whit
 white = WhiteIndex(screenNumber);
 black = BlackIndex(screenNumber);
 
 % Open an on screen window
-[window, windowRect] = PsychImaging('OpenWindow', screenNumber, white);
+[window, windowRect] = PsychImaging('OpenWindow', screenNumber, black);
 
 % Get the size of the on screen window
 [screenXpixels, screenYpixels] = Screen('WindowSize', window);
@@ -39,7 +39,7 @@ black = BlackIndex(screenNumber);
 Screen('TextSize', window, 30 );
 Screen('TextFont', window, 'Arial');
 DrawFormattedText(window, 'This is the title page of our project. Press any key to begin the trial.  ',...
-'center', 'center', [0 0 0]);
+'center', 'center', [1 1 1]);
 Screen('Flip', window);
 %
 %
@@ -71,7 +71,7 @@ lineWidthPix = 4;
 % Draw the fixation cross in white, set it to the center of our screen and
 % set good quality antialiasing
 Screen('DrawLines', window, allCoords,...
-    lineWidthPix, black, [xCenter yCenter], 2);
+    lineWidthPix, white, [xCenter yCenter], 2);
 
 KbStrokeWait;
 Screen('Flip', window);
