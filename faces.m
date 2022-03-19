@@ -39,6 +39,11 @@ Screen('BlendFunction', window, 'GL_SRC_ALPHA', 'GL_ONE_MINUS_SRC_ALPHA');
 %Random = randi([1 size(emotional_faces,1)]);
 %Random_Image_Generator = emotional_faces(Random).name;
 
+
+%urls for both images:
+%happy: https://i.ibb.co/H4R03hy/happy.png
+%angry: https://i.ibb.co/VTwtx9X/angry.png
+
 url = 'https://i.ibb.co/H4R03hy/happy.png';
 happyimg = webread(url);
 imagesc(happyimg)
