@@ -7,7 +7,7 @@
 %
 %
 %
-%
+% hello
 %
 % Clear the workspace and the screen
 sca;
