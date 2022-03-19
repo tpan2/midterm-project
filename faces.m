@@ -44,8 +44,9 @@ Screen('BlendFunction', window, 'GL_SRC_ALPHA', 'GL_ONE_MINUS_SRC_ALPHA');
 % imagesc(theImage);
 
 imds = imageDatastore('/Users/shanzehsayied/Documents/Github/midterm-project/face-directory/*.png');
-theImage = readall(imds);
-imshow(theImage{1});
+imgs = readall(imds);
+theImage = imgs{1}
+imshow(theImage);
 
 %theImageLocation = [PsychtoolboxRoot 'PsychDemos' filesep...
 %    'AlphaImageDemo' filesep 'konijntjes1024x768.jpg'];
