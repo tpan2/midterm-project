@@ -39,18 +39,9 @@ Screen('BlendFunction', window, 'GL_SRC_ALPHA', 'GL_ONE_MINUS_SRC_ALPHA');
 %Random = randi([1 size(emotional_faces,1)]);
 %Random_Image_Generator = emotional_faces(Random).name;
 
-% angry_url = 'https://drive.google.com/file/d/1xCAlQu-Fi7R1kXvC1RocB0DU6v_dl2An/view';
-% theImage = webread(angry_url);
-% imagesc(theImage);
-
 url = 'https://i.ibb.co/H4R03hy/happy.png';
 happyimg = webread(url);
 imagesc(happyimg)
-%theImageLocation = [PsychtoolboxRoot 'PsychDemos' filesep...
-%    'AlphaImageDemo' filesep 'konijntjes1024x768.jpg'];
-%theImage = imread(theImageLocation);
-
-%imshow('angry.png')
 
 
 % Get the size of the image
