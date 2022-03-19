@@ -35,13 +35,20 @@ Screen('BlendFunction', window, 'GL_SRC_ALPHA', 'GL_ONE_MINUS_SRC_ALPHA');
 
 % Here we load in an image from file. This one is a image of rabbits that
 % is included with PTB
-emotional_faces = dir(face-directory(pwd,'*.png'));
-Random = randi([1 size(emotional_faces,1)]);
-Random_Image_Generator = emotional_faces(Random).name;
+%emotional_faces = dir(face-directory(pwd,'*.png'));
+%Random = randi([1 size(emotional_faces,1)]);
+%Random_Image_Generator = emotional_faces(Random).name;
+
+angry_url = 'https://drive.google.com/file/d/1xCAlQu-Fi7R1kXvC1RocB0DU6v_dl2An/view'
+theImage = webread
+
 
 %theImageLocation = [PsychtoolboxRoot 'PsychDemos' filesep...
 %    'AlphaImageDemo' filesep 'konijntjes1024x768.jpg'];
-theImage = imread(Random_Image_Generator);
+%theImage = imread(theImageLocation);
+
+%imshow('angry.png')
+
 
 % Get the size of the image
 [s1, s2, s3] = size(theImage);
