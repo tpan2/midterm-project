@@ -33,8 +33,8 @@ ifi = Screen('GetFlipInterval', window);
 Screen('BlendFunction', window, 'GL_SRC_ALPHA', 'GL_ONE_MINUS_SRC_ALPHA');
 
 
-MyImages = dir(fullfile(pwd,'*.png'));
-RandomNumber = randi([1 size(MyImages,1)]);
+MyTestImages = dir(fullfile(pwd,'*.jpg'));
+RandomNumber = randi([1 size(MyTestImages,1)]);
 MyRandomImage = MyImages(RandomNumber).name;
 image = imread(MyRandomImage);
 % imshow(image);
