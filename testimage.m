@@ -34,14 +34,14 @@ Screen('BlendFunction', window, 'GL_SRC_ALPHA', 'GL_ONE_MINUS_SRC_ALPHA');
 
 
 MyTestImages = dir(fullfile(pwd,'*.jpg'));
-RandomNumber = randi([1 size(MyTestImages,1)]);
-MyRandomImage = MyImages(RandomNumber).name;
-image = imread(MyRandomImage);
+RandomTestNumber = randi([1 size(MyTestImages,1)]);
+MyRandomTestImage = MyTestImages(RandomTestNumber).name;
+testimage = imread(MyRandomTestImage);
 % imshow(image);
 
 
 % Make the image into a texture
-imageTexture = Screen('MakeTexture', window, image);
+imageTexture = Screen('MakeTexture', window, testimage);
 
 % Find Center
 [xCenter, yCenter] = RectCenter(windowRect);
