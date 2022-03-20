@@ -33,16 +33,14 @@ ifi = Screen('GetFlipInterval', window);
 Screen('BlendFunction', window, 'GL_SRC_ALPHA', 'GL_ONE_MINUS_SRC_ALPHA');
 
 
-%urls for both images:
-%happy: https://i.ibb.co/H4R03hy/happy.png
-%angry: https://i.ibb.co/VTwtx9X/angry.png
+MyImages = dir(fullfile(pwd,'*.png'));
+RandomNumber = randi([1 size(MyImages,1)]);
+MyRandomImage = MyImages(RandomNumber).name;
+% image(imread(MyRandomImage));
 
-url = 'https://i.ibb.co/H4R03hy/happy.png';
-happyimg = webread(url);
-imagesc(happyimg)
 
 % Make the image into a texture
-imageTexture = Screen('MakeTexture', window, happyimg);
+imageTexture = Screen('MakeTexture', window, MyRandomImage);
 
 % Find Center
 [xCenter, yCenter] = RectCenter(windowRect);
