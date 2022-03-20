@@ -49,7 +49,7 @@ imageTexture = Screen('MakeTexture', window, image);
 % Draw the image to the screen, unless otherwise specified PTB will draw
 % the texture full size in the center of the screen. We first draw the
 % image in its correct orientation.
-Screen('DrawTexture', window, imageTexture, [], [xCenter-400 yCenter-400 xCenter+400 yCenter+400], 0);
+Screen('DrawTexture', window, imageTexture, [], [xCenter-350 yCenter-450 xCenter+350 yCenter+450], 0);
 
 % Flip to the screen
 Screen('Flip', window);
