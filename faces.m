@@ -36,11 +36,12 @@ Screen('BlendFunction', window, 'GL_SRC_ALPHA', 'GL_ONE_MINUS_SRC_ALPHA');
 MyImages = dir(fullfile(pwd,'*.png'));
 RandomNumber = randi([1 size(MyImages,1)]);
 MyRandomImage = MyImages(RandomNumber).name;
-% image(imread(MyRandomImage));
+image = imread(MyRandomImage);
+% imshow(image);
 
 
 % Make the image into a texture
-imageTexture = Screen('MakeTexture', window, MyRandomImage);
+imageTexture = Screen('MakeTexture', window, image);
 
 % Find Center
 [xCenter, yCenter] = RectCenter(windowRect);

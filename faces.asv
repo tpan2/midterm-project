@@ -37,10 +37,11 @@ MyImages = dir(fullfile(pwd,'*.png'));
 RandomNumber = randi([1 size(MyImages,1)]);
 MyRandomImage = MyImages(RandomNumber).name;
 image(imread(MyRandomImage));
+)
 
-
+%%
 % Make the image into a texture
-imageTexture = Screen('MakeTexture', window, happyimg);
+imageTexture = Screen('MakeTexture', window, MyRandomImage);
 
 % Find Center
 [xCenter, yCenter] = RectCenter(windowRect);
