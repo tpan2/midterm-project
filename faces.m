@@ -1,3 +1,7 @@
+%Completed: script successfully displays face in correct location in a
+%black background
+%Next steps in this script: find a way to randomly draw from both images 
+
 % Clear the workspace and the screen
 sca;
 close all;
@@ -15,11 +19,9 @@ screenNumber = max(screens);
 % Define black and white
 white = WhiteIndex(screenNumber);
 black = BlackIndex(screenNumber);
-grey = white / 2;
-inc = white - grey;
 
 % Open an on screen window
-[window, windowRect] = PsychImaging('OpenWindow', screenNumber, grey);
+[window, windowRect] = PsychImaging('OpenWindow', screenNumber, black);
 
 % Get the size of the on screen window
 [screenXpixels, screenYpixels] = Screen('WindowSize', window);
@@ -27,17 +29,8 @@ inc = white - grey;
 % Query the frame duration
 ifi = Screen('GetFlipInterval', window);
 
-% Get the centre coordinate of the window
-[xCenter, yCenter] = RectCenter(windowRect);
-
 % Set up alpha-blending for smooth (anti-aliased) lines
 Screen('BlendFunction', window, 'GL_SRC_ALPHA', 'GL_ONE_MINUS_SRC_ALPHA');
-
-% Here we load in an image from file. This one is a image of rabbits that
-% is included with PTB
-%emotional_faces = dir(face-directory(pwd,'*.png'));
-%Random = randi([1 size(emotional_faces,1)]);
-%Random_Image_Generator = emotional_faces(Random).name;
 
 
 %urls for both images:
@@ -48,47 +41,20 @@ url = 'https://i.ibb.co/H4R03hy/happy.png';
 happyimg = webread(url);
 imagesc(happyimg)
 
-
-% Get the size of the image
-[s1, s2, s3] = size(happyimg);
-
-% Here we check if the image is too big to fit on the screen and abort if
-% it is. See ImageRescaleDemo to see how to rescale an image.
-% if s1 > screenYpixels || s2 > screenYpixels
-%     disp('ERROR! Image is too big to fit on the screen');
-%     sca;
-%     return;
-% end
-
 % Make the image into a texture
 imageTexture = Screen('MakeTexture', window, happyimg);
+
+% Find Center
+[xCenter, yCenter] = RectCenter(windowRect);
 
 % Draw the image to the screen, unless otherwise specified PTB will draw
 % the texture full size in the center of the screen. We first draw the
 % image in its correct orientation.
-Screen('DrawTexture', window, imageTexture, [], [], 0);
+Screen('DrawTexture', window, imageTexture, [], [xCenter-400 yCenter-400 xCenter+400 yCenter+400], 0);
 
 % Flip to the screen
 Screen('Flip', window);
 
-% Wait for two seconds
-WaitSecs(2);
-
-% Now fill the screen green
-Screen('FillRect', window, [0 1 0]);
-
-% Flip to the screen
-Screen('Flip', window);
-
-% Wait for two seconds
-WaitSecs(2);
-
-% Draw the image to the screen for a second time this time upside down and
-% drawn onto our updated blue background
-Screen('DrawTexture', window, imageTexture, [], [], 180);
-
-% Flip to the screen
-Screen('Flip', window);
 
 % Wait for one second
 WaitSecs(2);
