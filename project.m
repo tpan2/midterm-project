@@ -1,4 +1,4 @@
-%Hi Shanzeh, 
+  %Hi Shanzeh, 
 %I started writing some code based off the tutorials. There are two parts:
 %text and fixation cross. feel free to try out the script and let me know
 %your thoughts later. Headed to the hospital, bye!
