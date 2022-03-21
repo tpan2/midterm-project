@@ -1,7 +1,7 @@
 %Completed: script successfully displays face in correct location in a
 %black background
 %Next steps in this script: find a way to randomly draw from both images 
-
+function faces()
 % Clear the workspace and the screen
 sca;
 close all;
@@ -60,3 +60,4 @@ WaitSecs(2);
 
 % Clear the screen
 sca;
+end 
