@@ -34,8 +34,10 @@ black = BlackIndex(screenNumber);
 %
 %
 %
-%
+%--------------------------------
 % #1: Display text instructions
+%--------------------------------
+%
 Screen('TextSize', window, 30 );
 Screen('TextFont', window, 'Arial');
 DrawFormattedText(window, 'This is the title page of our project. Press any key to begin the trial.  ',...
@@ -44,8 +46,10 @@ Screen('Flip', window);
 %
 %
 %
-%
+%----------------------
 % #2: Fixation Cross
+%----------------------
+%
 % Set up alpha-blending for smooth (anti-aliased) lines
 Screen('BlendFunction', window, 'GL_SRC_ALPHA', 'GL_ONE_MINUS_SRC_ALPHA');
 
