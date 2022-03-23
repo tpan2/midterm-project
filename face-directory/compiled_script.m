@@ -9,7 +9,7 @@ screens = Screen('Screens');
 Screen('Preference', 'SkipSyncTests', 2);
 %----------------------------------------------------------------------
 %                       Screen setup
-%----------------------------------------------------------------------u
+%----------------------------------------------------------------------
 
 % Draw to the external screen if avaliable
 screenNumber = max(screens);
