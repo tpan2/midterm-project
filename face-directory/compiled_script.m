@@ -146,11 +146,11 @@ Screen('DrawTexture', window, imageTexture, [], [xCenter-350 yCenter-500 xCenter
 
 % Flip to the screen
 Screen('Flip', window);
-
+tic;
 
 % Wait for one second
 WaitSecs(.033);
-
+t = toc;
 %----------------------------------------------------------------------
 %                       Mask Image Shows Up
 %----------------------------------------------------------------------
