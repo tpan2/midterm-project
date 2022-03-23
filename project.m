@@ -79,7 +79,6 @@ Screen('DrawLines', window, allCoords,...
 
 KbStrokeWait;
 Screen('Flip', window);
-  
 
 KbStrokeWait;
 sca;
