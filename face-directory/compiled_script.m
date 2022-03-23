@@ -9,12 +9,12 @@ screens = Screen('Screens');
 Screen('Preference', 'SkipSyncTests', 2);
 %----------------------------------------------------------------------
 %                       Screen setup
-%----------------------------------------------------------------------
+%----------------------------------------------------------------------u
 
 % Draw to the external screen if avaliable
 screenNumber = max(screens);
 
-% Define black and whit
+% Define black and white
 white = WhiteIndex(screenNumber);
 black = BlackIndex(screenNumber);
 
@@ -26,14 +26,14 @@ black = BlackIndex(screenNumber);
 %
 %
 %
-%--------------------------------r
+%--------------------------------
 % #1: Display text instructions
 %--------------------------------
 %
 Screen('TextSize', window, 30 );
 Screen('TextFont', window, 'Arial');
-DrawFormattedText(window, 'This is the title page of our project. Press any key to begin the trial.  ',...
-'center', 'center', [1 1 1]);
+DrawFormattedText(window, 'Focus on the fixation cross, then you will be presented with varying visual stimuli. At the end, you should rate how much you prefer a given character from 1-10 using the keyboard with 1 being least preferable to 10 being most preferable. Press any key to begin the trial.',...
+'center', 'center', [1 1 1], 74);
 Screen('Flip', window);
 %
 %
