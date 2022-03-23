@@ -74,7 +74,7 @@ Screen('Flip', window);
 
 % KbStrokeWait;
 
-WaitSecs(4);
+WaitSecs(.3);
 
 %----------------------------------------------------------------------
 %                       Mask Image Shows Up
@@ -105,11 +105,11 @@ Screen('Flip', window);
 
 
 % Wait for one second
-WaitSecs(2);
+WaitSecs(.5);
 
 % Clear the screen
 
-WaitSecs(4);
+% WaitSecs(4);
 
 %----------------------------------------------------------------------
 %                       Face Image Shows Up
@@ -140,14 +140,16 @@ imageTexture = Screen('MakeTexture', window, image);
 % draw
 % the texture full size in the center of the screen. We first draw the
 % image in its correct orientation.
-Screen('DrawTexture', window, imageTexture, [], [xCenter-400 yCenter-450 xCenter+400 yCenter+450], 0);
+% Screen('DrawTexture', window, imageTexture, [], [xCenter-400 yCenter-450
+% xCenter+400 yCenter+450], 0);
+Screen('DrawTexture', window, imageTexture, [], [xCenter-350 yCenter-500 xCenter+400 yCenter+300], 0);
 
 % Flip to the screen
 Screen('Flip', window);
 
 
 % Wait for one second
-WaitSecs(2);
+WaitSecs(.033);
 
 %----------------------------------------------------------------------
 %                       Mask Image Shows Up
@@ -178,11 +180,11 @@ Screen('Flip', window);
 
 
 % Wait for one second
-WaitSecs(2);
+WaitSecs(.05);
 
 % Clear the screen
 
-WaitSecs(4);
+% WaitSecs(4);
 
 %----------------------------------------------------------------------
 %                       Test Image Shows Up
@@ -211,4 +213,4 @@ Screen('Flip', window);
 
 
 % Wait for one second
-WaitSecs(2);
+WaitSecs(.15);
