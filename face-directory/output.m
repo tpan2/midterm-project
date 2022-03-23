@@ -50,7 +50,12 @@ while time < 3;
     if (keyIsDown) == 1;
         key = KbName(find(keyCode))
         disp(key);
-            trialstore(1,1) = key(1,1);
+        b=regexp(key,'\d','match')
+        %'\d' refers to any one digit/non-digit character. This is intended
+        %to separate the number from the other character that comes with
+        %the number
+        key1=str2double([b{:}])
+            trialstore(1,1) = key1;
             %i is number of trials
             % trialstore(i,i)= key
             %enter in the number input (key) as a new entry into a matrix
