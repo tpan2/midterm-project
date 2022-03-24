@@ -32,7 +32,7 @@ black = BlackIndex(screenNumber);
 %
 Screen('TextSize', window, 30 );
 Screen('TextFont', window, 'Arial');
-DrawFormattedText(window, 'Focus on the fixation cross, then you will be presented with varying visual stimuli. At the end, you should rate how much you prefer a given character from 1-10 using the keyboard with 1 being least preferable to 10 being most preferable. Press any key to begin the trial.',...
+DrawFormattedText(window, 'Focus on the fixation cross, then you will be presented with varying visual stimuli. At the end, you should rate how much you prefer a given character from 1-10 using the keyboard with 1 being least preferable to 10 being most preferable. You will have three seconds to choose your response. Press any key to begin the trial.',...
 'center', 'center', [1 1 1], 74);
 Screen('Flip', window);
 %
@@ -125,7 +125,10 @@ MyImages = dir(fullfile(pwd,'*1.png'));
 RandomNumber = randi([1 size(MyImages,1)]);
 MyRandomImage = MyImages(RandomNumber).name;
 image = imread(MyRandomImage);
-% imshow(image);
+pat = "happy";
+condition = contains(MyRandomImage, pat);
+%condition = 1 when the image is a happy face
+%condition = 0 when the image is an angry facce
 
 
 % Make the image into a texture
@@ -212,3 +215,44 @@ Screen('Flip', window);
 
 % Wait for one second
 WaitSecs(.15);
+
+%----------------------------------------------------------------------
+%                       Collect Output
+%----------------------------------------------------------------------
+
+FlushEvents('keyDown');
+%make sure that previous inputs are erased
+
+trialstore = ones(1,1);
+%create empty matrix for responses
+
+time1 = GetSecs;
+time = 0;
+
+while time < 3;
+    %3 sec is how long they have to answer the prompt
+    [keyIsDown, time2, keyCode, deltasecs] = KbCheck;
+    time = time2-time1;
+   
+    if (keyIsDown) == 1;
+        key = KbName(find(keyCode))
+        disp(key);
+        b=regexp(key,'\d','match')
+        %'\d' refers to any one digit/non-digit character. This is intended
+        %to separate the number from the other character that comes with
+        %the number
+        key1=str2double([b{:}]); 1
+            trialstore(1,1) = key1;
+            combinedstore = [condition, trialstore];
+            %i is number of trials
+            % trialstore(i,i)= key
+            %enter in the number input (key) as a new entry into a matrix
+           
+            filename = 'Output.csv';
+            writematrix(combinedstore, filename,'sheet', 1, 'Range','A2:B2');
+
+    end
+end
+
+sca; 
+
