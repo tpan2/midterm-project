@@ -32,12 +32,19 @@ black = BlackIndex(screenNumber);
 %
 Screen('TextSize', window, 30 );
 Screen('TextFont', window, 'Arial');
-DrawFormattedText(window, 'Focus on the fixation cross, then you will be presented with varying visual stimuli. At the end, you should rate how much you prefer a given character from 1-10 using the keyboard with 1 being least preferable to 10 being most preferable. You will have three seconds to choose your response. Press any key to begin the trial.',...
+DrawFormattedText(window, 'Focus on the fixation cross, then you will be presented with varying visual stimuli. At the end, you should rate how much you prefer a given character from 1-10 using the keyboard with 1 being least preferable to 10 being most preferable. You will have 3 seconds to choose your response. Press any key to begin the trial.',...
 'center', 'center', [1 1 1], 74);
 Screen('Flip', window);
 %
 %
-%
+% MyImages = dir(fullfile(pwd,'*1.png'));
+MyImages = dir('*1.png');
+nfiles = length(MyImages)
+randomorder = randperm(nfiles);
+
+
+for ii = 1:nfiles
+
 %----------------------
 % #2: Fixation Cross
 %----------------------
@@ -64,7 +71,7 @@ allCoords = [xCoords; yCoords];
 % Set the line width for our fixation cross
 lineWidthPix = 4;
 
-% Draw the fixation cross in white, set it to the center of our screen andk
+% Draw the fixation cross in white, set it to the center of our screen and
 % set good quality antialiasing
 Screen('DrawLines', window, allCoords,...
     lineWidthPix, white, [xCenter yCenter], 2);
@@ -84,7 +91,7 @@ ifi = Screen('GetFlipInterval', window);
 Screen('BlendFunction', window, 'GL_SRC_ALPHA', 'GL_ONE_MINUS_SRC_ALPHA');
 
 imagefile = dir('mask.png');
-filename = imagefile.name;
+filename = imagefile.name
 maskimage = imread(filename);
 
 % Make the image into a texture
@@ -113,7 +120,6 @@ WaitSecs(.5);
 %                       Face Image Shows Up
 %----------------------------------------------------------------------
 
-
 % Query the frame duration
 ifi = Screen('GetFlipInterval', window);
 
@@ -121,15 +127,15 @@ ifi = Screen('GetFlipInterval', window);
 Screen('BlendFunction', window, 'GL_SRC_ALPHA', 'GL_ONE_MINUS_SRC_ALPHA');
 
 
-MyImages = dir(fullfile(pwd,'*1.png'));
-RandomNumber = randi([1 size(MyImages,1)]);
-MyRandomImage = MyImages(RandomNumber).name;
+MyImages = dir(fullfile(pwd,'*1.png'))
+%RandomNumber = randi([1 size(MyImages,1)])
+% ordering_images = randperm(nfiles);
+MyRandomImage = MyImages(randomorder(ii)).name
 image = imread(MyRandomImage);
 pat = "happy";
 condition = contains(MyRandomImage, pat);
 %condition = 1 when the image is a happy face
-%condition = 0 when the image is an angry facce
-
+%condition = 0 when the image is an angry face
 
 % Make the image into a texture
 imageTexture = Screen('MakeTexture', window, image);
@@ -213,8 +219,24 @@ Screen('DrawTexture', window, imageTexture, [], [xCenter-400 yCenter-430 xCenter
 Screen('Flip', window);
 
 
-% Wait for one second
-WaitSecs(.15);
+% Wait for three seconds
+WaitSecs(3);
+%----------------------
+% #: Instructions between trials 
+%----------------------
+if ii~=nfiles
+    Screen('TextSize', window, 30 );
+    Screen('TextFont', window, 'Arial');
+    DrawFormattedText(window, 'Press any key to proceed to the next trial.',...
+    'center', 'center', [1 1 1], 74);
+    Screen('Flip', window);
+else
+    Screen('TextSize', window, 30 );
+    Screen('TextFont', window, 'Arial');
+    DrawFormattedText(window, 'Thus concludes this experiment. Thank you for participating.',...
+    'center', 'center', [1 1 1], 74);
+    Screen('Flip', window);
+end
 
 %----------------------------------------------------------------------
 %                       Collect Output
@@ -257,6 +279,6 @@ while time < 3;
 
     end
 end
-
+end
 sca; 
 

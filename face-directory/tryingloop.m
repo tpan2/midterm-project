@@ -71,7 +71,7 @@ allCoords = [xCoords; yCoords];
 % Set the line width for our fixation cross
 lineWidthPix = 4;
 
-% Draw the fixation cross in white, set it to the center of our screen andk
+% Draw the fixation cross in white, set it to the center of our screen and
 % set good quality antialiasing
 Screen('DrawLines', window, allCoords,...
     lineWidthPix, white, [xCenter yCenter], 2);
