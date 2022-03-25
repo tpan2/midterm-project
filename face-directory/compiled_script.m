@@ -2,7 +2,7 @@ sca;
 close all;
 clear;
 
-% Here we call some default settings for setting up Psychtoolbox
+% Here we call some default settings for 1 2 3 4setting up Psychtoolbox
 PsychDefaultSetup(2);
 
 screens = Screen('Screens');
@@ -44,7 +44,7 @@ randomorder = randperm(nfiles);
 
 
 for ii = 1:nfiles
-% KbStrokeWait;
+
 %----------------------
 % #2: Fixation Cross
 %----------------------
