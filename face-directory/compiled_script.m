@@ -44,7 +44,7 @@ randomorder = randperm(nfiles);
 
 
 for ii = 1:nfiles
-
+KbStrokeWait;
 %----------------------
 % #2: Fixation Cross
 %----------------------
@@ -177,7 +177,7 @@ imageTexture = Screen('MakeTexture', window, maskimage);
 % Find Center
 [xCenter, yCenter] = RectCenter(windowRect);
 
-% Draw the image to the screen, unless otherwise specified PTB will draw
+% Draw the image to the screen, unless otherwise specified PTB wll draw
 % the texture full size in the center of the screen. We first draw the
 % image in its correct orientation.
 Screen('DrawTexture', window, imageTexture, [], [xCenter-350 yCenter-500 xCenter+400 yCenter+300], 0);
@@ -233,7 +233,7 @@ if ii~=nfiles
 else
     Screen('TextSize', window, 30 );
     Screen('TextFont', window, 'Arial');
-    DrawFormattedText(window, 'Thus concludes this experiment. Thank you for participating.',...
+    DrawFormattedText(window, 'This concludes this experiment. Thank you for participating. Press any key to end.',...
     'center', 'center', [1 1 1], 74);
     Screen('Flip', window);
 end
