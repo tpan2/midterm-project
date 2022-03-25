@@ -37,13 +37,17 @@ DrawFormattedText(window, 'Focus on the fixation cross, then you will be present
 Screen('Flip', window);
 %
 %
-% MyImages = dir(fullfile(pwd,'*1.png'));
+
+% chooses a random order for the emotional images to be displayed, in the
+% loop
 MyImages = dir('*1.png');
-nfiles = length(MyImages)
+nfiles = length(MyImages);
 randomorder = randperm(nfiles);
 
 
 for ii = 1:nfiles
+% For loop so that the experiment will run however many times as however
+% many salient faces we have in our directory.
 
 %----------------------
 % #2: Fixation Cross
@@ -90,8 +94,9 @@ ifi = Screen('GetFlipInterval', window);
 % Set up alpha-blending for smooth (anti-aliased) lines
 Screen('BlendFunction', window, 'GL_SRC_ALPHA', 'GL_ONE_MINUS_SRC_ALPHA');
 
+% finds, reads mask image
 imagefile = dir('mask.png');
-filename = imagefile.name
+filename = imagefile.name;
 maskimage = imread(filename);
 
 % Make the image into a texture
@@ -109,12 +114,11 @@ Screen('DrawTexture', window, imageTexture, [], [xCenter-350 yCenter-500 xCenter
 Screen('Flip', window);
 
 
-% Wait for one second
+% Wait for .5 seconds
 WaitSecs(.5);
 
 % Clear the screen
 
-% WaitSecs(4);
 
 %----------------------------------------------------------------------
 %                       Face Image Shows Up
@@ -127,10 +131,10 @@ ifi = Screen('GetFlipInterval', window);
 Screen('BlendFunction', window, 'GL_SRC_ALPHA', 'GL_ONE_MINUS_SRC_ALPHA');
 
 
-MyImages = dir(fullfile(pwd,'*1.png'))
+MyImages = dir(fullfile(pwd,'*1.png'));
 %RandomNumber = randi([1 size(MyImages,1)])
 % ordering_images = randperm(nfiles);
-MyRandomImage = MyImages(randomorder(ii)).name
+MyRandomImage = MyImages(randomorder(ii)).name;
 image = imread(MyRandomImage);
 pat = "happy";
 condition = contains(MyRandomImage, pat);
@@ -153,11 +157,10 @@ Screen('DrawTexture', window, imageTexture, [], [xCenter-350 yCenter-500 xCenter
 
 % Flip to the screen
 Screen('Flip', window);
-tic;
 
 % Wait for one second
 WaitSecs(.033);
-t = toc;
+
 %----------------------------------------------------------------------
 %                       Mask Image Shows Up
 %----------------------------------------------------------------------
@@ -191,8 +194,6 @@ WaitSecs(.05);
 
 % Clear the screen
 
-% WaitSecs(4);
-
 %----------------------------------------------------------------------
 %                       Test Image Shows Up
 %----------------------------------------------------------------------
@@ -201,7 +202,7 @@ MyTestImages = dir(fullfile(pwd,'*.jpg'));
 RandomTestNumber = randi([1 size(MyTestImages,1)]);
 MyRandomTestImage = MyTestImages(RandomTestNumber).name;
 test_image = imread(MyRandomTestImage);
-% imshow(image);
+% shows a random test image from our directory
 
 
 % Make the image into a texture
@@ -222,7 +223,7 @@ Screen('Flip', window);
 % Wait for three seconds
 WaitSecs(3);
 %----------------------
-% #: Instructions between trials 
+% Instructions between trials 
 %----------------------
 if ii~=nfiles
     Screen('TextSize', window, 30 );
@@ -230,12 +231,14 @@ if ii~=nfiles
     DrawFormattedText(window, 'Press any key to proceed to the next trial.',...
     'center', 'center', [1 1 1], 74);
     Screen('Flip', window);
+% between trials, these instructions show on the screen
 else
     Screen('TextSize', window, 30 );
     Screen('TextFont', window, 'Arial');
     DrawFormattedText(window, 'This concludes this experiment. Thank you for participating.',...
     'center', 'center', [1 1 1], 74);
     Screen('Flip', window);
+% end screen instructions
 
 
 %----------------------------------------------------------------------
@@ -245,7 +248,7 @@ else
 FlushEvents('keyDown');
 %make sure that previous inputs are erased
 
-trialstore = ones(1,1);
+trialstore = ones(1,1)
 %create empty matrix for responses
 
 time1 = GetSecs;
@@ -263,9 +266,9 @@ while time < 3;
         %'\d' refers to any one digit/non-digit character. This is intended
         %to separate the number from the other character that comes with
         %the number
-        key1=str2double([b{:}]); 1
-            trialstore(1,1) = key1;
-            combinedstore = [condition, trialstore];
+        key1=str2double([b{:}]);
+            trialstore(1,1) = key1
+            combinedstore = [condition, trialstore]
             %i is number of trials
             % trialstore(i,i)= key
             %enter in the number input (key) as a new entry into a matrix
