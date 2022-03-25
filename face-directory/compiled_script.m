@@ -21,7 +21,7 @@ black = BlackIndex(screenNumber);
 % Open an on screen window
 [window, windowRect] = PsychImaging('OpenWindow', screenNumber, black,[0 0 1000 1000]);
 
-% Get the size of the on screen window
+% Get the size of the on screen  window
 [screenXpixels, screenYpixels] = Screen('WindowSize', window);
 %
 %
@@ -44,7 +44,7 @@ randomorder = randperm(nfiles);
 
 
 for ii = 1:nfiles
-KbStrokeWait;
+% KbStrokeWait;
 %----------------------
 % #2: Fixation Cross
 %----------------------
@@ -177,7 +177,7 @@ imageTexture = Screen('MakeTexture', window, maskimage);
 % Find Center
 [xCenter, yCenter] = RectCenter(windowRect);
 
-% Draw the image to the screen, unless otherwise specified PTB wll draw
+% Draw the image to the screen, unless otherwise specified PTB will3 draw
 % the texture full size in the center of the screen. We first draw the
 % image in its correct orientation.
 Screen('DrawTexture', window, imageTexture, [], [xCenter-350 yCenter-500 xCenter+400 yCenter+300], 0);
@@ -233,10 +233,10 @@ if ii~=nfiles
 else
     Screen('TextSize', window, 30 );
     Screen('TextFont', window, 'Arial');
-    DrawFormattedText(window, 'This concludes this experiment. Thank you for participating. Press any key to end.',...
+    DrawFormattedText(window, 'This concludes this experiment. Thank you for participating.',...
     'center', 'center', [1 1 1], 74);
     Screen('Flip', window);
-end
+
 
 %----------------------------------------------------------------------
 %                       Collect Output
@@ -278,6 +278,7 @@ while time < 3;
             %second cell is the valence assigned by the participant
 
     end
+end
 end
 end
 sca; 
