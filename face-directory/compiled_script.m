@@ -2,7 +2,7 @@ sca;
 close all;
 clear;
 
-% Here we call some default settings for 1 2 3 4setting up Psychtoolbox
+% Here we call some default settings for  7 6 5 4setting up Psychtoolbox
 PsychDefaultSetup(2);
 
 screens = Screen('Screens');
