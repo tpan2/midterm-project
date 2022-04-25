@@ -14,8 +14,6 @@ image = imread(MyRandomImage);
 
 mask = randi([0 1], size(image));
 mask = uint8(mask);
-class(image)
-class(mask)
 actual_mask = mask.*image;
 
 imshow(actual_mask)
