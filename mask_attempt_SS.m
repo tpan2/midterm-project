@@ -1,4 +1,4 @@
-MyImages = dir(fullfile(pwd,'*_Artwork 1.png'));
+MyImages = dir(fullfile(pwd,'*1.png'));
 RandomNumber = randi([1 size(MyImages,1)]);
 MyRandomImage = MyImages(RandomNumber).name;
 image = imread(MyRandomImage);
@@ -19,7 +19,7 @@ while n < 1;
     noise_mask = randi([0 1], size(image));
     mask = uint8(mask);
     actual_mask = mask.*image;
-    nonzeroes = find(actual_mask(:,:,1)>0);
+    nonzeroes = find(actual_mask(:,:,:)>0);
     mask(nonzeroes) = noise_mask(nonzeroes)*255;
     final_mask = rgb2gray(mask);
     

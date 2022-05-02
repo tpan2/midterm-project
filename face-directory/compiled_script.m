@@ -98,12 +98,29 @@ for ii = 1:nfiles
     Screen('BlendFunction', window, 'GL_SRC_ALPHA', 'GL_ONE_MINUS_SRC_ALPHA');
 
     % finds, reads mask image
-    imagefile = dir('mask.png');
-    filename = imagefile.name;
-    maskimage = imread(filename);
+    %imagefile = dir('mask.png');
+    %filename = imagefile.name;
+    %maskimage = imread(filename);
+
+    MyImages = dir(fullfile(pwd,'*1.png'));
+    RandomNumber = randi([1 size(MyImages,1)]);
+    MyRandomImage = MyImages(RandomNumber).name;
+    image = imread(MyRandomImage);
+
+    n = 0;
+    while n < 1;
+        n = n+1;
+        mask = ones(size(image));
+        noise_mask = randi([0 1], size(image));
+        mask = uint8(mask);
+        actual_mask = mask.*image;
+        nonzeroes = find(actual_mask(:,:,:)>0);
+        mask(nonzeroes) = noise_mask(nonzeroes)*255;
+        final_mask = rgb2gray(mask);
+    end
 
     % Make the image into a texture
-    imageTexture = Screen('MakeTexture', window, maskimage);
+    imageTexture = Screen('MakeTexture', window, final_mask);
 
     % Find Center
     [xCenter, yCenter] = RectCenter(windowRect);
@@ -168,22 +185,40 @@ for ii = 1:nfiles
     %                       Mask Image Shows Up
     %----------------------------------------------------------------------
     % Query the frame duration
-    ifi = Screen('GetFlipInterval', window);
+     ifi = Screen('GetFlipInterval', window);
 
     % Set up alpha-blending for smooth (anti-aliased) lines
     Screen('BlendFunction', window, 'GL_SRC_ALPHA', 'GL_ONE_MINUS_SRC_ALPHA');
 
-    imagefile = dir('mask.png');
-    filename = imagefile.name;
-    maskimage = imread(filename);
+    % finds, reads mask image
+    %imagefile = dir('mask.png');
+    %filename = imagefile.name;
+    %maskimage = imread(filename);
+
+    MyImages = dir(fullfile(pwd,'*1.png'));
+    RandomNumber = randi([1 size(MyImages,1)]);
+    MyRandomImage = MyImages(RandomNumber).name;
+    image = imread(MyRandomImage);
+
+    n = 0;
+    while n < 1;
+        n = n+1;
+        mask = ones(size(image));
+        noise_mask = randi([0 1], size(image));
+        mask = uint8(mask);
+        actual_mask = mask.*image;
+        nonzeroes = find(actual_mask(:,:,:)>0);
+        mask(nonzeroes) = noise_mask(nonzeroes)*255;
+        final_mask = rgb2gray(mask);
+    end
 
     % Make the image into a texture
-    imageTexture = Screen('MakeTexture', window, maskimage);
+    imageTexture = Screen('MakeTexture', window, final_mask);
 
     % Find Center
     [xCenter, yCenter] = RectCenter(windowRect);
 
-    % Draw the image to the screen, unless otherwise specified PTB will3 draw
+    % Draw the image to the screen, unless otherwise specified PTB will draw
     % the texture full size in the center of the screen. We first draw the
     % image in its correct orientation.
     Screen('DrawTexture', window, imageTexture, [], [xCenter-350 yCenter-500 xCenter+400 yCenter+300], 0);
@@ -192,8 +227,10 @@ for ii = 1:nfiles
     Screen('Flip', window);
 
 
-    % Wait for one second
-    WaitSecs(.05);
+    % Wait for .5 seconds
+    WaitSecs(.5);
+
+    % Clear the screen
 
     % Clear the screen
 
