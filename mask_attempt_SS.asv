@@ -20,8 +20,7 @@ while n < 1;
     mask = uint8(mask);
     actual_mask = mask.*image;
     nonzeroes = find(actual_mask(:,:,1)>0);
-    mask(nonzeroes) = noise_mask(nonzeroes)*255;
-    final_mask = rgb2gray(mask);
+    mask(nonzeroes) = noise_mask;
     
 %    actual_mask = actual_mask.>0;
     dimensions_act_mask = size(actual_mask)
@@ -29,4 +28,4 @@ while n < 1;
  %       if actual_mask < 150
  %           actual
 end
-imshow(final_mask)
+imshow(mask)
