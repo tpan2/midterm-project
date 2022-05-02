@@ -264,7 +264,7 @@ for ii = 1:nfiles
     %                       Collect Output
     %----------------------------------------------------------------------
 
-    FlushEvents('keyDown');
+    %FlushEvents('keyDown');
     %make sure that previous inputs are erased
 
     trialstore = ones(1,1)
