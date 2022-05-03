@@ -185,7 +185,7 @@ for ii = 1:nfiles
     %                       Mask Image Shows Up
     %----------------------------------------------------------------------
     % Query the frame duration
-     ifi = Screen('GetFlipInterval', window);
+    ifi = Screen('GetFlipInterval', window);
 
     % Set up alpha-blending for smooth (anti-aliased) lines
     Screen('BlendFunction', window, 'GL_SRC_ALPHA', 'GL_ONE_MINUS_SRC_ALPHA');
