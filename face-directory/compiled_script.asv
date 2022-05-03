@@ -291,7 +291,7 @@ for ii = 1:nfiles
                 trialstore(1,1) = key1; 
                 combinedstore(ii,:) = [condition, trialstore];
                 tbl = array2table(combinedstore); 
-                writetable(tbl,'Output.xlsx', 'Sheet',5);
+                writetable(tbl,'Output.xlsx', 'Sheet',2);
                
                 %i is number of trials
                 % trialstore(i,i)= key
