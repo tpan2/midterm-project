@@ -122,7 +122,7 @@ function compiled_script()
             noise_mask = randi([0 1], size(image));
             mask = uint8(mask);
             actual_mask = mask.*image;
-            nonzeroes = find(actual_mask(:,:,:)>0);
+            nonzeroes = find(actual_mask(:,:,:) > 0);
             mask(nonzeroes) = noise_mask(nonzeroes)*255;
             final_mask = rgb2gray(mask);
         end
