@@ -36,13 +36,13 @@ std(angry_data);
 normality_angry = adtest(angry_data);
 normality_happy = adtest(happy_data);
 %Anderson-Darling test to determine normality
-  if (normality_angry == 0) && (normality_happy ==0);  
-      %if normal > student t test
+  if (normality_angry == 0) && (normality_happy ==0);
       ttest_significance = ttest(angry_data, happy_data);
-      disp(ttest_significance);
+      disp
   else;
-      %if not normal distr on both sets > Mann Whitney u-test
       mww_significance= ranksum(angry_data, happy_data);
-      disp(mww_significance);
-  end
-
+    %if not normal distr on both sets > Mann Whitney u-test
+  
+    %if normal, 
+        %if equal variance > student t test
+        %if unequal variance > student t-test with Welch's correction
