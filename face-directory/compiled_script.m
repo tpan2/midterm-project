@@ -1,15 +1,18 @@
+
 function compiled_script()
 
     sca;
     close all;
     clear;
+
     % counts # of times the code has been run.
     persistent counter
+ %   counter = 0;
     if isempty(counter) 
         counter = 0; 
     end
     counter = counter+1
-    
+
     % Here we call some default settings for setting up Psychtoolbox
     PsychDefaultSetup(2);
     
