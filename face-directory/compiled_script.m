@@ -84,7 +84,6 @@ function compiled_script()
         %
         % Set up alpha-blending for smooth (anti-aliased) lines
         Screen('BlendFunction', window, 'GL_SRC_ALPHA', 'GL_ONE_MINUS_SRC_ALPHA');
-    
         % Setup the text type for the window
         Screen('TextFont', window, 'Ariel');
         Screen('TextSize', window, 36);
@@ -112,8 +111,8 @@ function compiled_script()
         KbStrokeWait;
         Screen('Flip', window);
     
-        WaitSecs(.01);
-        %.3
+        WaitSecs(.3);
+     
     
         %----------------------------------------------------------------------
         %                       Mask Image Shows Up
@@ -148,7 +147,7 @@ function compiled_script()
     
         % Wait for .5 seconds
         WaitSecs(.5);
-        %.5
+      
         % Clear the screen
     
     
@@ -191,8 +190,7 @@ function compiled_script()
         Screen('Flip', window);
     
         % Wait for one second
-        WaitSecs(.002);
-        % .033
+        WaitSecs(.033);
     
         %----------------------------------------------------------------------
         %                       Mask Image Shows Up
@@ -207,23 +205,6 @@ function compiled_script()
         %imagefile = dir('mask.png');
         %filename = imagefile.name;
         %maskimage = imread(filename);
-    
-        MyImages = dir(fullfile(pwd,'*1.png'));
-        RandomNumber = randi([1 size(MyImages,1)]);
-        MyRandomImage = MyImages(RandomNumber).name;
-        image = imread(MyRandomImage);
-    
-        n = 0;
-        while n < 1;
-            n = n+1;
-            mask = ones(size(image));
-            noise_mask = randi([0 1], size(image));
-            mask = uint8(mask);
-            actual_mask = mask.*image;
-            nonzeroes = find(actual_mask(:,:,:)>0);
-            mask(nonzeroes) = noise_mask(nonzeroes)*255;
-            final_mask = rgb2gray(mask);
-        end
     
         % Make the image into a texture
         imageTexture = Screen('MakeTexture', window, final_mask);
