@@ -238,7 +238,7 @@ function compiled_script()
     
     
         % Wait for .5 seconds
-        WaitSecs(.5);
+        WaitSecs(.02);
         %.5
         % Clear the screen
     
