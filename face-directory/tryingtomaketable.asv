@@ -48,8 +48,8 @@ normality_happy = adtest(happy_data);
       disp(['mww_significance is ', num2str(mww_significance)]);
   end
 
-
-boxplot(happinessdata, condition)
+figure
+boxplot([happinessdata, condition], 'Labels',{angry, happy}, 'PlotStyle','traditional','Symbol','o', 'Widths', 
 xlabel('Condition')
 ylabel('Happiness Rating')
-title('Happiness Ratings by condition')
+title('Happiness Ratings by Condition')

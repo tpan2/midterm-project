@@ -1,4 +1,3 @@
-
 function compiled_script()
 
     sca;
@@ -10,7 +9,7 @@ function compiled_script()
  %   counter = 0;
     if isempty(counter) 
         counter = 0; 
-    end
+    end 
     counter = counter+1
 
     % Here we call some default settings for setting up Psychtoolbox
