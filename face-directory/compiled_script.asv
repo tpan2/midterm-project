@@ -39,15 +39,13 @@ function compiled_script()
     %
     %
     %
-    %----------------------------------------------------------------------
+    %--------------------------------
     % #1: Display text instructions
-    %----------------------------------------------------------------------
+    %--------------------------------
     %
     Screen('TextSize', window, 30 );
     Screen('TextFont', window, 'Arial');
-    DrawFormattedText(window, ['Focus on the fixation cross, then you will be presented with varying visual stimuli. ' ...
-        'At the end, you should rate how much you prefer a given character from 1-9 using the keyboard with 1 being least preferable to 9 being most preferable. ' ...
-        'You will have 3 seconds to choose your response. Press any key to begin the trial.'],...
+    DrawFormattedText(window, 'Focus on the fixation cross, then you will be presented with varying visual stimuli. At the end, you should rate how much you prefer a given character from 1-10 using the keyboard with 1 being least preferable to 10 being most preferable. You will have 3 seconds to choose your response. Press any key to begin the trial.',...
     'center', 'center', [1 1 1], 74);
     Screen('Flip', window);
     
@@ -84,10 +82,10 @@ function compiled_script()
         % For loop so that the experiment will run however many times as however
         % many emotional faces we have in our directory.
     
-    %----------------------------------------------------------------------
-    % Fixation Cross
-    %----------------------------------------------------------------------
-        
+        %----------------------
+        % Fixation Cross
+        %----------------------
+        %
         % Set up alpha-blending for smooth (anti-aliased) lines
         Screen('BlendFunction', window, 'GL_SRC_ALPHA', 'GL_ONE_MINUS_SRC_ALPHA');
         % Setup the text type for the window
@@ -129,6 +127,13 @@ function compiled_script()
         % Set up alpha-blending for smooth (anti-aliased) lines
         Screen('BlendFunction', window, 'GL_SRC_ALPHA', 'GL_ONE_MINUS_SRC_ALPHA');
     
+        % finds, reads mask image
+        %imagefile = dir('mask.png');
+        %filename = imagefile.name;
+        %maskimage = imread(filename);
+    
+       %placeholder for mask image generation
+    
         % Make the image into a texture
         imageTexture = Screen('MakeTexture', window, final_mask);
     
@@ -143,11 +148,13 @@ function compiled_script()
         % Flip to the screen
         Screen('Flip', window);
     
+    
         % Wait for .5 seconds
         WaitSecs(.5);
       
         % Clear the screen
-
+    
+    
         %----------------------------------------------------------------------
         %                       Face Image Shows Up
         %----------------------------------------------------------------------
@@ -179,7 +186,8 @@ function compiled_script()
         % draw
         % the texture full size in the center of the screen. We first draw the
         % image in its correct orientation.
-
+        % Screen('DrawTexture', window, imageTexture, [], [xCenter-400 yCenter-450
+        % xCenter+400 yCenter+450], 0);
         Screen('DrawTexture', window, imageTexture, [], [xCenter-350 yCenter-500 xCenter+400 yCenter+300], 0);
     
         % Flip to the screen
@@ -196,6 +204,11 @@ function compiled_script()
     
         % Set up alpha-blending for smooth (anti-aliased) lines
         Screen('BlendFunction', window, 'GL_SRC_ALPHA', 'GL_ONE_MINUS_SRC_ALPHA');
+    
+        % finds, reads mask image
+        %imagefile = dir('mask.png');
+        %filename = imagefile.name;
+        %maskimage = imread(filename);
     
         % Make the image into a texture
         imageTexture = Screen('MakeTexture', window, final_mask);
@@ -214,7 +227,7 @@ function compiled_script()
     
         % Wait for .5 seconds
         WaitSecs(.5);
-
+        %.5
         % Clear the screen
     
         % Clear the screen
@@ -249,6 +262,7 @@ function compiled_script()
         %                       Collect Output
         %----------------------------------------------------------------------
     
+        %FlushEvents('keyDown');
         %make sure that previous inputs are erased
     
         trialstore = ones(1,1)
@@ -278,14 +292,16 @@ function compiled_script()
                     writetable(tbl,'Output.xlsx', 'Sheet',counter);
                    
                     %i is number of trials
+                    % trialstore(i,i)= key
+                    %enter in the number input (key) as a new entry into a matrix
     
     
             end
         end 
         
-%----------------------------------------------------------------------
-% Instructions between trials 
-%----------------------------------------------------------------------
+        %----------------------
+        % Instructions between trials 
+        %----------------------
         if ii~=nfiles
             Screen('TextSize', window, 30 );
             Screen('TextFont', window, 'Arial');
