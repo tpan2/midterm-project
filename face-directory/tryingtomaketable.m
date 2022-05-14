@@ -46,12 +46,12 @@ normality_happy = adtest(happy_data);
       disp(['ttest_significance is ', num2str(ttest_significance)]);
   else
       %if not normal distr on both sets > Mann Whitney u-test
-      [h,mww_significance, ci, stats]= ranksum(angry_data, happy_data);
+      [h,mww_significance]= ranksum(angry_data, happy_data);
       disp(['mww_significance is ', num2str(mww_significance)]);
   end
 
 %make simple boxplot to visualize data
 boxplot(happinessdata, condition)
 xlabel('Condition (0 = Angry, 1 = Happy)')
-ylabel('Happiness Rating')
-title('Happiness Ratings by condition')
+ylabel('Preference Rating')
+title('Preference Ratings by condition')
